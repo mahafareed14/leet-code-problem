@@ -84,37 +84,6 @@ var chunk = function(arr, size) {
 };
 
 
-/*Given a signed 32-bit integer x, 
-return x with its digits reversed. 
-If reversing x causes the value to go outside the signed 32-bit 
-integer range [-231, 231 - 1], then return 0
-*/
-/**
- * @param {number} x
- * @return {number}
- */
-var reverse = function(x) {
-    let num = [], i = 0;
-    const isneg = x < 0 ? true : false;
-    if(isneg) 
-        x = x * -1; 
-    while(x > 0) {
-        num[i++] = x%10
-        x = Math.floor(x/10)
-    }
-    let newnumber = 0; x = num.length - 1
-    for(i = 0; i< num.length; i++) {
-        newnumber += (num[i] * (10**x));
-        x--;
-    }
-    if(isneg) 
-        newnumber = newnumber * -1;
-    if(newnumber < -(2**31) || newnumber > (2**31)-1)
-        return 0;
-    return newnumber;
-};
-
-
 /*Given an integer array nums of length n, you want to create an array ans of length 2n where ans[i] == nums[i] and ans[i + n] == nums[i] for 0 <= i < n (0-indexed).
 Specifically, ans is the concatenation of two nums arrays.
 Return the array ans.
